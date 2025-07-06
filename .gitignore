@@ -1,0 +1,8 @@
+# Ignora solo archivos CSV dentro de subcarpetas de reports/
+reports/carga/*.csv
+reports/estres/*.csv
+
+# Python cache
+__pycache__/
+*.py[cod]
+
