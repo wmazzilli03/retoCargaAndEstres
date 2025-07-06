@@ -13,3 +13,4 @@
 
 # comando para prueba de estres 
 # interfaz UI: locust -f .\tasks\TestEstresUI.py 
+# locust -f .\tasks\TestEstresUI.py --headless --run-time 1m --csv=reports/estres/resultado_estres
