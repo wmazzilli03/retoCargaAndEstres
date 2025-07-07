@@ -8,12 +8,16 @@ class TestEstresUI(HttpUser):
 
     @task
     def consultar_guia(self):
-        self.client.get(RUTA_GUIA)
+        with self.client.get(RUTA_GUIA, catch_response=True) as response:
+            if response.status_code == 200:
+                response.success()
+            else:
+                response.failure(f"ERROR {response.status_code}: {response.text}")
 
 
-class simulacionDeEstres(LoadTestShape):
+class SimulacionDeEstres(LoadTestShape):
     """
-    Curva de carga personalizada:Incrementa usuarios cada 15 segundos hasta 250,
+    Curva de carga personalizada: incrementa usuarios cada 15 segundos hasta 250.
     """
     def tick(self):
         run_time = self.get_run_time()
